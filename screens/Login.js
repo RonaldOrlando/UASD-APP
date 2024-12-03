@@ -1,22 +1,24 @@
-// screens/Login.js
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Aquí iría la validación de las credenciales
-    if (username === 'test' && password === '1234') {
-      navigation.navigate('Menu');
-    } else {
-      alert('Credenciales incorrectas');
+    // Simulación de lógica de inicio de sesión
+    if (username === '' || password === '') {
+      Alert.alert('Error', 'Por favor, complete todos los campos.');
+      return;
     }
+
+    // Redirigir al menú después del inicio de sesión (sin validar en este ejemplo)
+    navigation.navigate('Menu');
   };
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Iniciar Sesión</Text>
       <TextInput
         style={styles.input}
         placeholder="Usuario"
@@ -30,8 +32,12 @@ const Login = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
       />
-      <Button title="Iniciar sesión" onPress={handleLogin} />
-      <Button title="Recuperar Contraseña" onPress={() => {}} />
+      <Button title="Ingresar" onPress={handleLogin} />
+      <Button
+        title="Registrarse"
+        onPress={() => navigation.navigate('Register')} // Navegación al registro
+        color="gray"
+      />
     </View>
   );
 };
@@ -42,12 +48,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 10,
-    paddingLeft: 10,
+    padding: 10,
+    borderRadius: 5,
   },
 });
 

@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Landing from '../screens/Landing';
 import Login from '../screens/Login';
+import RegisterScreen from '../screens/RegisterScreen.js';
 import Menu from '../screens/Menu';
 import Noticias from '../screens/Noticias';  // Lo crearemos después
 import Horarios from '../screens/Horarios';  // Lo crearemos después
@@ -24,6 +25,7 @@ const AppNavigator = () => {
       <Stack.Navigator initialRouteName="Landing">
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Noticias" component={Noticias} />
         <Stack.Screen name="Horarios" component={Horarios} />
